@@ -1,0 +1,26 @@
+一、简介
+vivo 蓝心大模型 API 调用示例
+本项目提供了一个简洁的 Python 封装，用于调用 vivo 蓝心大模型（vivo-BlueLM-TB-Pro）的 API 接口。代码结构清晰，
+支持通过环境变量管理密钥，方便快速集成到其他项目中。
+>一个简单、可运行的 vivo 蓝心大模型 API 调用示例，只需一行命令即可向 AI 提问。
+
+二、运行原理
+1. 密钥管理：使用 `.env` 文件存储 `APP_ID` 和 `APP_KEY`，通过 `python-dotenv` 加载到环境中，避
+免敏感信息泄露。
+2. 签名生成：根据 vivo 官方鉴权规范，利用 `auth_util.py` 自动计算请求头中的 `X-AI-GATEWAY-SIGNATURE` 签名。
+3. API 调用：在 `ai.py` 中封装 `ask_vivo(prompt)` 函数，接收用户问题，构造请求参数，发送 POST 请求并解析返
+回结果。
+4. 入口程序：`main.py` 作为演示入口，直接运行即可看到 AI 的回答。
+
+
+三、快速开始
+ #前置条件
+- Python 3.8 或更高版本
+- pip（Python 包管理器）
+
+ # 1. 安装依赖
+
+项目根目录下已经提供了 `requirements.txt` 文件，里面列出了所有必需的 Python 库。打开终端（命令提示符或
+ PowerShell），进入项目根目录，运行以下命令一键安装所有依赖：
+```bash
+pip install -r requirements.txt
